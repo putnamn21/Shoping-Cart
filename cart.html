@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<!--
+
+
+
+
+
+
+-->
+<html>
+
+<head>
+    <title>Shopping Cart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <div id="name"></div>
+            </a>
+            <div class="navbar-right">
+                <div class="container minicart"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid text-center">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Shop</a></li>
+            <li class="active"><a href="#">Order</a></li>
+            <li><a href="#">Payment</a></li>
+        </ol>
+        <div id="day"></div>
+    </div>
+
+    <div class="container text-center">
+
+        <div class="col-md-5 col-sm-12">
+            <div class="bigcart"></div>
+            <h1>Your shopping cart</h1>
+
+
+            <h3>How many things can you get working on this page?</h3>
+
+            <p>1. Replace the products on the right with the products that are added to the cart from index.html</p>
+            <p>2. Show Product Description</p>
+            <p>3. Show Correct Price</p>
+            <p>4. Show correct total at bottom?</p>
+            <p>5. Account for 7.5% sales tax in the state of colorado if you added the shipping info to the form</p>
+            <p>6. Calculate total after tax.</p>
+            <p>7. Add $10.00 for standard shipping, $20 for next day and $30 for overnight.</p>
+            <p>7. Enable the delete and edit buttons for each item (down arrow far right) </p>
+            <p>8. Add a new payment page to collect the credit card info.</p>
+
+
+        </div>
+
+        <div class="col-md-7 col-sm-12 text-left">
+            <ul id="cartItems">
+                <li class="row list-inline columnCaptions">
+                    <span class="col-xs-2">QTY</span>
+                    <span class="col-xs-2">ITEM</span>
+                    <span class="col-xs-2 col-xs-offset-2">Price</span>
+                    <span class="col-xs-3">Total Price</span>
+                </li>
+            </ul>
+
+        
+        <div style="margin-bottom:100px"></div>
+        <!-- The popover content -->
+
+        <div id="popover" style="display: none">
+            <a href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+
+        <!-- The checkout area -->
+        <div class="col-xs-11 col-xs-offset-1">
+            <div class="row">
+                <h4 class="display-inline">Cart Total: $ <span id="cartTotal"></span></h4>
+            </div>
+            <div class="row">
+               <h4 class="display-inline">Tax: $ <span id="tax"></span></h4>
+            </div>
+            <div class="row">
+                <form class="form-inline">
+                <h4 class="inline">Shipping: </h4>
+                <select onchange="calcCartTotals(cartTotal, customer)" id="shipping" class="form-control">
+                    <option value="10">Standard: $10.00</option>
+                    <option value="20">3-day: $20.00</option>
+                    <option value="30">Next-day: $30.00</option>
+                </select>
+                </form>
+            </div>
+            <div class="row">
+                <h4 class="display-inline">Order Total: $ <span id="orderTotal"></span></h4>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript includes -->
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/customjs.js"></script>
+    <script src="assets/js/cart.js"></script>
+</body>
+
+</html>

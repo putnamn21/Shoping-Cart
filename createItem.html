@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>Item generator</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-6">
+            <form class="form-group">
+                <label>Item Description</label>
+                <input type="text" id="itmDesc" class="form-control" required/>
+                <label>Item ID</label>
+                <input type="text" id="id" class="form-control" required/>
+                <label>Price</label>
+                <input type="text" id="price" class="form-control" required/>
+                <label>Image URL</label>
+                <input type="text" id="img" class="form-control" required/>
+                <input onclick="saveItem()" type="submit" class="btn btn-danger">
+            </form>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        //localStorage.setItem("itemArray", null);
+
+        function ItemToSell(desc, id, price, url) {
+            this.htmlCode = '<div class="col-md-3 col-sm-4 col-xs-6"><img src="' + url + '" class="img-responsive"><div class="producttitle">' + desc + '</div><div class="productprice"><div class="pull-right"><a href="#" class="btn btn-danger btn-sm" role="button" onclick="addToCart(\'' + desc + '\',\'' + id + '\',\'' + price + '\',\'' + url + '\',\'' + id + '\'); showCartCount();">ADD</a></div><div class="pricetext">Price: $' + price + '</div><label for="' + id + '">QTY:</label><select class="form-control form-inline" id="' + id + '"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div><hr/></div>';
+        }
+
+        function saveItem() {
+            var itemArray = JSON.parse(localStorage.getItem("itemArray"));
+            if (itemArray == null) {
+                itemArray = [];
+            }
+            var desc = _htmlvalue("itmDesc");
+            var id = _htmlvalue("id");
+            var price = _htmlvalue("price");
+            var url = _htmlvalue("img");
+            var obj = new ItemToSell(desc, id, price, url);
+            itemArray.push(obj);
+            localStorage.setItem("itemArray", JSON.stringify(itemArray));
+        }
+        console.log(JSON.parse(localStorage.getItem("itemArray")));
+
+        function _htmlvalue(id) {
+            var a = document.getElementById(id).value;
+            return (a);
+        }
+    </script>
+</body>
+
+</html>
